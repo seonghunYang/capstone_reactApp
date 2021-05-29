@@ -1,19 +1,22 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { Container } from '@chakra-ui/react';
+import TopNav from '../components/TopNav';
+import Lorem from '../components/LoremIpsum';
+import Footer from '../components/Footer';
 
 function Main() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <TopNav/>
+      <Container maxW="container.lg" mt={50}>
+        <Lorem/>
+        <Lorem/>
+        <Lorem/>
+        <Lorem/>
+        <Lorem/>
+        <Lorem/>
+      </Container>
+      <Footer/>
+    </>
   );
 }
 

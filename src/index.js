@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import { ChakraProvider } from "@chakra-ui/react"
 
 import reducer from './reducers/index';
 import "./styles/main.scss";
@@ -17,7 +18,9 @@ const store = createStore(reducer, composeEnhancers(applyMiddleware(logger, thun
 ReactDOM.render(
   <Provider store={store}> 
     <React.StrictMode>
-      <App />
+      <ChakraProvider>
+        <App />
+      </ChakraProvider>
     </React.StrictMode>
   </Provider>,
   document.getElementById('root')
