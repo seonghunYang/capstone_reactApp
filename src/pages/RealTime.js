@@ -3,7 +3,7 @@ import TopNav from '../components/TopNav';
 import Lorem from '../components/LoremIpsum';
 import Footer from '../components/Footer';
 
-function Main() {
+function RealTime() {
   return (
     <>
       <TopNav/>
@@ -17,4 +17,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default RealTime;

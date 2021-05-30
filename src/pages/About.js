@@ -3,12 +3,11 @@ import TopNav from '../components/TopNav';
 import Lorem from '../components/LoremIpsum';
 import Footer from '../components/Footer';
 
-function Monitoring() {
+function About() {
   return (
     <>
       <TopNav/>
       <Container maxW="container.lg" mt={50}>
-        <Lorem/>
         <Lorem/>
       </Container>
       <Footer/>
@@ -16,4 +15,4 @@ function Monitoring() {
   );
 }
 
-export default Monitoring;
+export default About;

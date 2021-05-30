@@ -4,7 +4,7 @@ import Lorem from '../components/LoremIpsum';
 import Footer from '../components/Footer';
 import TestChart from '../components/charts/TestChart';
 
-function Main() {
+function Visualization() {
   return (
     <>
       <TopNav/>
@@ -16,4 +16,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Visualization;

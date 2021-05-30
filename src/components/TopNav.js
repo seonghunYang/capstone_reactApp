@@ -13,16 +13,20 @@ import Logo from './Logo';
 
 const Links = [
   {
-    label: '사고 데이터 시각화',
-    href: '/visualization',
-  },
-  {
     label: '모니터링',
     href: '/monitoring',
   },
   {
+    label: '사고 데이터 시각화',
+    href: '/visualization',
+  },
+  {
     label: '실시간 위험지표',
     href: '/real-time',
+  },
+  {
+    label: 'About',
+    href: '/about'
   }
 ];
 
