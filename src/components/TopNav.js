@@ -11,19 +11,32 @@ import {
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import Logo from './Logo';
 
-const Links = ['Dashboard', 'Projects', 'Team'];
+const Links = [
+  {
+    label: '사고 데이터 시각화',
+    href: '/visualization',
+  },
+  {
+    label: '모니터링',
+    href: '/monitoring',
+  },
+  {
+    label: '실시간 위험지표',
+    href: '/real-time',
+  }
+];
 
 const NavLink = ({ children }) => (
   <Link
     px={2}
-    py={1}
+    py={1}s
     rounded={'md'}
     _hover={{
       textDecoration: 'none',
       bg: useColorModeValue('gray.200', 'gray.700'),
     }}
-    href={'/sub'}>
-    {children}
+    href={children.href}>
+    {children.label}
   </Link>
 );
 
@@ -32,7 +45,7 @@ export default function Simple() {
 
   return (
     <>
-      <Box bg={useColorModeValue('#caf0f8', 'gray.800')} color={useColorModeValue('gray.700', 'white')} px={4}>
+      <Box bg={useColorModeValue('#CAE9FF', 'gray.800')} color={useColorModeValue('gray.700', 'white')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
