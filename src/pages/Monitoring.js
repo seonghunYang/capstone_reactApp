@@ -1,15 +1,15 @@
 import { Container } from '@chakra-ui/react';
 import TopNav from '../components/TopNav';
-import Lorem from '../components/LoremIpsum';
+import Map from '../components/Map';
 import Footer from '../components/Footer';
 
 function Monitoring() {
+
   return (
     <>
       <TopNav/>
       <Container maxW="container.lg" mt={50}>
-        <Lorem/>
-        <Lorem/>
+        <Map/>
       </Container>
       <Footer/>
     </>
