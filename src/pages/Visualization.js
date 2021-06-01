@@ -1,8 +1,8 @@
-import { Container, Heading, Center } from '@chakra-ui/react';
+import { Container, Heading, Center, Stack } from '@chakra-ui/react';
 import TopNav from '../components/TopNav';
-import Lorem from '../components/LoremIpsum';
 import Footer from '../components/Footer';
-import TestChart from '../components/charts/TestChart';
+import ClusterMap from '../components/VisualizationMap';
+import NonClusterMap from '../components/VisualizationMap(NoCluster)';
 
 function Visualization() {
   return (
@@ -14,7 +14,14 @@ function Visualization() {
             사고 데이터 시각화
           </Heading>
         </Center>
-        <TestChart/>
+        <Stack>
+          <Center>
+            <ClusterMap/>
+          </Center>
+          <Center>
+            <NonClusterMap/>
+          </Center>
+        </Stack>
       </Container>
       <Footer/>
     </>

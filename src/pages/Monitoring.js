@@ -1,6 +1,6 @@
 import { Container, Center } from '@chakra-ui/react';
 import TopNav from '../components/TopNav';
-import Map from '../components/Map';
+import Map from '../components/MonitoringMap';
 import Footer from '../components/Footer';
 
 function Monitoring() {

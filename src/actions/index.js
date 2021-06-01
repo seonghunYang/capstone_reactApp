@@ -1,38 +1,62 @@
 import axios from 'axios';
-import location from '../location/data.json';
+import tideObsList from '../location/tideObsList.json';
+import buObsList from '../location/buObsList.json';
 import config from '../config/config.json';
 
 const API_KEY = config.Observatory['API key'];
-const Observatory_URL = "http://www.khoa.go.kr/oceangrid/grid/api/tideObsRecent/search.do?"
+const Tide_Obs_URL = "http://www.khoa.go.kr/oceangrid/grid/api/tideObsRecent/search.do?"
+const Bu_Obs_URL = "http://www.khoa.go.kr/oceangrid/grid/api/buObsRecent/search.do?"
 
 export function getObservatoryData(latitude, longitude){
-  var min = Number.MAX_SAFE_INTEGER;
-  var minObsCode = null;
+  var minTide = Number.MAX_SAFE_INTEGER;
+  var minBu = Number.MAX_SAFE_INTEGER;
+  var minTideObsCode = null;
+  var minBuObsCode = null;
 
-  location.positions.map((position) => {
+  tideObsList.positions.map((position) => {
     var calLat = (position.lat - latitude)**2;
     var calLng = (position.lng - longitude)**2;
     var sum = calLat + calLng;
-    if(min > sum){
-      min = sum;
-      minObsCode = position.id;
+    if(minTide > sum){
+      minTide = sum;
+      minTideObsCode = position.id;
+    }
+  });
+
+  buObsList.positions.map((position) => {
+    var calLat = (position.lat - latitude)**2;
+    var calLng = (position.lng - longitude)**2;
+    var sum = calLat + calLng;
+    if(minBu > sum){
+      minBu = sum;
+      minBuObsCode = position.id;
     }
   });
 
   return (dispatch) => {
-    axios.get(Observatory_URL, {params: {
+
+    axios.get(Tide_Obs_URL, {params: {
       ServiceKey: API_KEY,
-      ObsCode: minObsCode,
+      ObsCode: minTideObsCode,
       ResultType: "json"
     }}).then(({data}) => {
       dispatch({
-        type: 'SET_OBSERV_DATA', payload: data
+        type: 'SET_TIDE_OBS_DATA', payload: data
       });
     }).catch((error) => {
+      console.log('ERROR : ', error);
+    });
+
+    axios.get(Bu_Obs_URL, {params: {
+      ServiceKey: API_KEY,
+      ObsCode: minBuObsCode,
+      ResultType: "json"
+    }}).then(({data}) => {
       dispatch({
-        type: 'ERROR',
-        payload: error.response
+        type: 'SET_BU_OBS_DATA', payload: data
       });
+    }).catch((error)=>{
+      console.log('ERROR : ', error);
     });
   };
 }
