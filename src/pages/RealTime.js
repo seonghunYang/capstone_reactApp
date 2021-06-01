@@ -25,18 +25,21 @@ import {
 
 import TopNav from '../components/TopNav';
 import Footer from '../components/Footer';
-
+import {getObservatoryData} from "../actions/index";
+import { useDispatch, useSelector } from 'react-redux'
 
 function RealTime() {
   const [operateSystem, setOperateSystem] = useState(false);
+  const dispatch = useDispatch();
   const timer = useRef(null);
   function handleClickStartButton() {
     setOperateSystem(true)
     timer.current = setInterval(() => {
         navigator.geolocation.getCurrentPosition((position) => {
+          dispatch(getObservatoryData(position.coords.latitude, position.coords.longitude))
           console.log(position.coords.latitude, position.coords.longitude);
         });
-    }, 1000);
+    }, 5000);
   }
 
   function handleClickStopButton() {

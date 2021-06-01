@@ -1,6 +1,6 @@
 import axios from 'axios';
 import location from '../location/data.json';
-import config from '../../config/config.json';
+import config from '../config/config.json';
 
 const API_KEY = config.Observatory['API key'];
 const Observatory_URL = "http://www.khoa.go.kr/oceangrid/grid/api/tideObsRecent/search.do?"
