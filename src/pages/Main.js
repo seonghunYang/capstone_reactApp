@@ -61,7 +61,7 @@ function Main() {
           </Flex>
           <Flex flex={1} align="center">
             <Image
-              boxSize="lg"
+              boxSize={{ base: 'sm', md: 'lg' }}
               alt={'Login Image'}
               objectFit={'cover'}
               src={
