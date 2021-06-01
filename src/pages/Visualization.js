@@ -3,7 +3,7 @@ import TopNav from '../components/TopNav';
 import Lorem from '../components/LoremIpsum';
 import Footer from '../components/Footer';
 import TestChart from '../components/charts/TestChart';
-
+import VarRaderChart from '../components/VarRaderChart';
 function Visualization() {
   return (
     <>
@@ -15,6 +15,10 @@ function Visualization() {
           </Heading>
         </Center>
         <TestChart/>
+        <Center >
+        <VarRaderChart/>
+
+        </Center>
       </Container>
       <Footer/>
     </>

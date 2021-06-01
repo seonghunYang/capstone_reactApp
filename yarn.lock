@@ -4707,6 +4707,11 @@ d3-format@1, d3-format@^1.2.0:
   resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-1.4.5.tgz#374f2ba1320e3717eb74a9356c67daee17a7edb4"
   integrity sha512-J0piedu6Z8iB6TbIGfZgDzfXxUFN3qQRMofy2oPdXzQibYGqPB/9iMcxr/TGalU+2RsyDO+U4f33id8tbnSRMQ==
 
+d3-format@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-3.0.0.tgz#49971ce004d9969a2d6eb8385e3bac735a843a2f"
+  integrity sha512-vzHbrRFaD/Jx1zpiQWojO2Lvgmf7pIsA/D4b6ipd1hxBYzMKsZRsF3i+SWlHz8IpMF4epyKUdG+vhxEYUYB/1g==
+
 d3-geo@^1.6.4:
   version "1.12.1"
   resolved "https://registry.yarnpkg.com/d3-geo/-/d3-geo-1.12.1.tgz#7fc2ab7414b72e59fbcbd603e80d9adc029b035f"
