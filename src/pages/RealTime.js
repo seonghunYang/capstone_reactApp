@@ -25,18 +25,44 @@ import {
 
 import TopNav from '../components/TopNav';
 import Footer from '../components/Footer';
-
+import RealTimeMapContainer from '../components/realTimeMapContainer';
+import {getObservatoryData} from "../actions/index";
+import { useDispatch, useSelector } from 'react-redux'
 
 function RealTime() {
+  const [userGeolocationPath, setUserGeolocationPath] = useState([]);
   const [operateSystem, setOperateSystem] = useState(false);
+  const dispatch = useDispatch();
   const timer = useRef(null);
+  const pathMemory = useRef([]);
   function handleClickStartButton() {
     setOperateSystem(true)
     timer.current = setInterval(() => {
         navigator.geolocation.getCurrentPosition((position) => {
-          console.log(position.coords.latitude, position.coords.longitude);
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          pathMemory.current = pathMemory.current.concat({
+            lat: lat,
+            lng: lng
+          })
+          // pathMemory.current = [
+          //   {
+          //     lat: 37.4845377,
+          //     lng: 127.05075719999999
+          //   },
+          //   {
+          //     lat: 37.485,
+          //     lng: 127.06
+          //   },
+          //   {
+          //     lat: 37.487,
+          //     lng: 127.04
+          //   },
+          // ]
+          setUserGeolocationPath(pathMemory.current)
+          dispatch(getObservatoryData(lat, lng))
         });
-    }, 1000);
+    }, 5000);
   }
 
   function handleClickStopButton() {
@@ -85,6 +111,9 @@ function RealTime() {
             </Stat>
           </VStack>
         </Stack>
+      <Center p="6">
+        <RealTimeMapContainer geolocationPath={userGeolocationPath} />
+      </Center>
       </Container>
       <Footer/>
     </>
