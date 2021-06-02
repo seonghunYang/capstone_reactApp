@@ -78,13 +78,13 @@ export default function Map() {
 
   return(
     <Stack>
-      <HStack>
+      {/* <HStack>
         <IconButton aria-label="Search database" icon={<RepeatIcon />}
           onClick={() => {reload()}} />
-      </HStack>
+      </HStack> */}
       <Box id="clusterMap" 
-      height={{base: "350px", md: "700px"}} 
-      width={{base: "370px", md: "900px"}}
+      height={{base: "350px", md: "500px"}} 
+      width={{base: "370px", md: "700px"}}
       alignItems="center"></Box>
     </Stack>
   );

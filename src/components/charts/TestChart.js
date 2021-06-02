@@ -4,8 +4,8 @@ import 'react-vis/dist/style.css';
 
 export default function TestChart() {
   return(
-    <Center>
-      <XYPlot margin={{bottom: 70}} xType="ordinal" width={300} height={300}>
+    <>
+      <XYPlot xType="ordinal" width={250} height={250}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis tickLabelAngle={-45} />
@@ -25,7 +25,7 @@ export default function TestChart() {
           ]}
         />
       </XYPlot>
-    </Center>
+    </>
     
   );
 }
