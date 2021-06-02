@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import locations from '../location/data.json';
+import locations from '../location/tideObsList.json';
 import { useDispatch, useSelector } from 'react-redux';
 import { getObservatoryData } from '../actions';
 import { Box, useMediaQuery, IconButton, Stack, HStack } from "@chakra-ui/react";
@@ -8,7 +8,8 @@ import { RepeatIcon } from '@chakra-ui/icons';
 export default function Map() {
   const { kakao } = window;
   const dispatch = useDispatch();
-  const observ_data = useSelector((state) => state.observatory_data);
+  const bu_data = useSelector((state) => state.bu_data);
+  const tide_data = useSelector((state) => state.tide_data);
   const [marker, setMarker] = useState(0);
   const [map, setMap] = useState(null);
   const [info, setInfo] = useState(null);
@@ -45,10 +46,13 @@ export default function Map() {
     if(info){
       info.close();
     }
-    if(observ_data) {
-      var iwContent = `<div style="padding:5px;">lat : ${observ_data.result.meta.obs_lat}</div>
-                        <div style="padding:5px;">lng : ${observ_data.result.meta.obs_lon}</div>
-                        <div style="padding:5px;">observatory : ${observ_data.result.meta.obs_post_name}</div>`,
+    if(bu_data) {
+      var iwContent = `<div style="padding:5px;">lat : ${tide_data.result.meta.obs_lat}</div>
+                        <div style="padding:5px;">lng : ${tide_data.result.meta.obs_lon}</div>
+                        <div style="padding:5px;">observatory : ${tide_data.result.meta.obs_post_name}</div>
+                        <div style="padding:5px;">wave_hight??(tide) : ${tide_data.result.data.wave_hight}</div>
+                        <div style="padding:5px;">wave_height(bu) : ${bu_data.result.data.wave_height}</div>
+                        <div style="padding:5px;">--</div>`,
           iwRemoveable = true;
 
       var infowindow = new kakao.maps.InfoWindow({
@@ -58,7 +62,7 @@ export default function Map() {
       setInfo(infowindow);
       infowindow.open(map, marker);
     }
-  },[observ_data]);
+  }, [bu_data, tide_data]);
 
   function reload() {
     return window.location.reload();

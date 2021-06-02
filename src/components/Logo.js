@@ -10,6 +10,5 @@ export default function Logo() {
         alt="I SEA logo"
       />
     </Link>
-    
   );
 }
