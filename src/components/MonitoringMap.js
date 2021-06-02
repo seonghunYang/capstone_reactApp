@@ -52,7 +52,6 @@ export default function Map() {
                         <div style="padding:5px;">observatory : ${tide_data.result.meta.obs_post_name}</div>
                         <div style="padding:5px;">wave_hight??(tide) : ${tide_data.result.data.wave_hight}</div>
                         <div style="padding:5px;">wave_height(bu) : ${bu_data.result.data.wave_height}</div>
-                        <div style="padding:5px;">wave_height(bu) : ${bu_data.result.data.wave_height}</div>
                         <div style="padding:5px;">--</div>`,
           iwRemoveable = true;
 
@@ -63,7 +62,7 @@ export default function Map() {
       setInfo(infowindow);
       infowindow.open(map, marker);
     }
-  }, [bu_data]);
+  }, [bu_data, tide_data]);
 
   function reload() {
     return window.location.reload();

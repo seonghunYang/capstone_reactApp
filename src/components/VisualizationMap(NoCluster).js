@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import accidentData from '../location/accidentData.json';
 import { Box,  IconButton, Stack, HStack } from "@chakra-ui/react";
 import { RepeatIcon } from '@chakra-ui/icons';
-import markerImage from '../images/circle.png';
+import markerImage from '../images/pointer.png';
 
 export default function Map() {
   const { kakao } = window;
@@ -16,7 +16,7 @@ export default function Map() {
 
     var map = new kakao.maps.Map(container, options);
 
-    var imageSize = new kakao.maps.Size(10, 10); // 마커이미지의 크기입니다
+    var imageSize = new kakao.maps.Size(15, 15); // 마커이미지의 크기입니다
 
     accidentData.data.map((item) => {
       var markerPosition = new kakao.maps.LatLng(item.latitude, item.longitude);

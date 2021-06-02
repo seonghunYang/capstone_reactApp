@@ -2,7 +2,6 @@ import { Container, Heading, Center, Stack } from '@chakra-ui/react';
 import TopNav from '../components/TopNav';
 import Footer from '../components/Footer';
 import ClusterMap from '../components/VisualizationMap';
-import NonClusterMap from '../components/VisualizationMap(NoCluster)';
 
 function Visualization() {
   return (
@@ -17,9 +16,6 @@ function Visualization() {
         <Stack>
           <Center>
             <ClusterMap/>
-          </Center>
-          <Center>
-            <NonClusterMap/>
           </Center>
         </Stack>
       </Container>
