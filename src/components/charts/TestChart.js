@@ -1,5 +1,5 @@
 import {XYPlot, VerticalGridLines, VerticalBarSeries, HorizontalGridLines, XAxis, YAxis} from 'react-vis';
-import { Center } from "@chakra-ui/react"
+import { Center } from "@chakra-ui/react";
 import 'react-vis/dist/style.css';
 
 export default function TestChart() {

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import accidentData from '../location/accidentData.json';
+import accidentData from '../data/accidentData.json';
 import { Box,  IconButton, Stack, HStack } from "@chakra-ui/react";
 import { RepeatIcon } from '@chakra-ui/icons';
 import markerImage from '../images/pointer.png';
