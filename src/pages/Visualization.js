@@ -11,7 +11,7 @@ function Visualization() {
     <>
       <TopNav/>
       <Container maxW="container.lg" mt={50}>
-        {/* <Center mb={50}>
+        <Center mb={50}>
           <Heading as="h3" size="lg" isTruncated>
             사고 데이터 시각화
           </Heading>
@@ -25,7 +25,7 @@ function Visualization() {
           <Center>
             <ClusterMap/>
           </Center>
-        </Stack> */}
+        </Stack>
         <VisualizationDashboard/>
         <Box maxW="2xl" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="lg" mt={5} mb={5}>
           <Box w="700px" h="100%">

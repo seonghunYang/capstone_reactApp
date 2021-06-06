@@ -32,6 +32,12 @@ import { useDispatch, useSelector } from 'react-redux'
 function RealTime() {
   const [userGeolocationPath, setUserGeolocationPath] = useState([]);
   const [operateSystem, setOperateSystem] = useState(false);
+  const tide_data = useSelector(state => state.tide_data);
+  const weather_data = useSelector(state => state.weather_data);
+  const marinAccidentPer = useSelector(state => state.marinAccidentPer);
+  const pastAccidentPer = useSelector(state => state.pastAccidentPer);
+  const location = useSelector(state => state.location);
+
   const dispatch = useDispatch();
   const timer = useRef(null);
   const pathMemory = useRef([]);
@@ -82,7 +88,7 @@ function RealTime() {
         <Stack spacing={{base: '5', md: '20' }} pt={{base: '3', md: '5' }} direction={{ base: 'column', md: 'row' }}>
           <Center>
             <CircularProgress size={{base: "150px", md: "300px"}} value={40} color="green.400">
-              <CircularProgressLabel>40%</CircularProgressLabel>
+              <CircularProgressLabel>{marinAccidentPer}%</CircularProgressLabel>
             </CircularProgress>
           </Center>
           <VStack
@@ -91,7 +97,7 @@ function RealTime() {
           >
             <Text>위치</Text>
             <Badge>
-              경남 영천군 진도
+              {location}
             </Badge>
             <Text>날씨</Text>
             <Badge>
@@ -103,10 +109,15 @@ function RealTime() {
             </Badge>
             <Stat>
               <StatLabel>사고 확률</StatLabel>
-              <StatNumber>40%</StatNumber>
+              <StatNumber>{marinAccidentPer}%</StatNumber>
               <StatHelpText>
-                <StatArrow type="increase" />
-                23.36%
+                {
+                  marinAccidentPer - pastAccidentPer >= 0 ? 
+                  <StatArrow type="increase" />
+                  :
+                  <StatArrow type="decrease" />
+                }
+                {marinAccidentPer - pastAccidentPer}%
               </StatHelpText>
             </Stat>
           </VStack>
