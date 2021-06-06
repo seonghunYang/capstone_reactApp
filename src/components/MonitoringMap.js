@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import locations from '../location/tideObsList.json';
+import locations from '../location/realData.json';
 import { useDispatch, useSelector } from 'react-redux';
 import { getObservatoryData } from '../actions';
 import { Box, useMediaQuery, IconButton, Stack, HStack } from "@chakra-ui/react";
@@ -23,8 +23,8 @@ export default function Map() {
 
     var map = new kakao.maps.Map(container, options);
 
-    locations.positions.map((location) => {
-      var markerPosition = new kakao.maps.LatLng(location.lat, location.lng);
+    locations.map((location) => {
+      var markerPosition = new kakao.maps.LatLng(location[5], location[4]);
       var marker = new kakao.maps.Marker({
         position: markerPosition,
         clickable: true
@@ -32,7 +32,7 @@ export default function Map() {
       marker.setMap(map);
 
       kakao.maps.event.addListener(marker, 'click', function() {
-        dispatch(getObservatoryData(location.lat, location.lng));
+        dispatch(getObservatoryData(location[5], location[4]));
         const pos = marker.getPosition();
         map.panTo(pos);
         setMarker(marker);
