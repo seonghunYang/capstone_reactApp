@@ -1,9 +1,12 @@
 /*global kakao*/ 
 
 import React, { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 
 const RealTimeMapContainer = ( {geolocationPath} ) => {
     const map = useRef(null);
+    const dispatch = useDispatch();
+    const location = useSelector((state) => state.location)
     useEffect(() => {
         const container = document.getElementById('myMap');
 		const options = {
@@ -23,6 +26,14 @@ const RealTimeMapContainer = ( {geolocationPath} ) => {
                 position : locPosition
             });
             map.current.setCenter(locPosition)
+            var geocoder = new kakao.maps.services.Geocoder();
+            geocoder.coord2RegionCode(locPosition.getLng(), locPosition.getLat(), (result) => {
+            console.log(result)
+                dispatch({
+                type: "CHANGE_LOCATION",
+                payload: result[0].address_name
+            })
+            }); 
             // 경로 표시
             const paths = geolocationPath.map(location => {
                 return new kakao.maps.LatLng(location.lat, location.lng)
