@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getObservatoryData } from '../actions';
 import { Box, useMediaQuery, IconButton, Stack, HStack } from "@chakra-ui/react";
 import { RepeatIcon } from '@chakra-ui/icons';
+import markerImage from '../images/pointer.png';
+
 
 export default function Map() {
   const { kakao } = window;
@@ -39,6 +41,15 @@ export default function Map() {
       });
 
     });
+
+    var imageSize = new kakao.maps.Size(15, 15); // 마커이미지의 크기입니다
+    var markerPosition = new kakao.maps.LatLng('36.0900', '124.5300');
+    var marker = new kakao.maps.Marker({
+      position: markerPosition,
+      image: new kakao.maps.MarkerImage(markerImage, imageSize, 0)
+    });
+    marker.setMap(map);
+    
     setMap(map);
   }, []);
 
