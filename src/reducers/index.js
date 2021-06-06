@@ -2,17 +2,23 @@ import produce from "immer";
 
 const initialState= {
   tide_data: null,
-  bu_data: null
+  weather_data: null,
+  marinAccidentPer: 0,
+  pastAccidentPer: 0,
+  location: null,
+  html : null
 }
 
 const reducer = produce((state, action) => {
   switch(action.type) {
-    case 'SET_TIDE_OBS_DATA' : 
-      state.tide_data = action.payload;
+    case 'SET_MODEL_DATA' : 
+      state.tide_data = action.payload.TIDE_OBS_DATA;
+      // state.weather_data = action.payload.WEATHER_DATA;
+      state.pastAccidentPer = state.marinAccidentPer;
+      state.marinAccidentPer = action.payload.accidentData;
       break;
-    case 'SET_BU_OBS_DATA':
-      state.bu_data = action.payload;
-      break;
+    case "CHANGE_LOCATION":
+      state.location = action.payload
     default:
       break;
   }
