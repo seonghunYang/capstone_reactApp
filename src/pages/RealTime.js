@@ -11,7 +11,8 @@ import {
   ButtonGroup,
   useBreakpointValue,
   Badge,
-  VStack
+  VStack,
+  Box
 } from '@chakra-ui/react';
 
 import {
@@ -32,8 +33,8 @@ import { useDispatch, useSelector } from 'react-redux'
 function RealTime() {
   const [userGeolocationPath, setUserGeolocationPath] = useState([]);
   const [operateSystem, setOperateSystem] = useState(false);
+  const [riskGrade, setRiskGrade] = useState("D");
   const tide_data = useSelector(state => state.tide_data);
-  const weather_data = useSelector(state => state.weather_data);
   const marinAccidentPer = useSelector(state => state.marinAccidentPer);
   const pastAccidentPer = useSelector(state => state.pastAccidentPer);
   const location = useSelector(state => state.location);
@@ -41,6 +42,19 @@ function RealTime() {
   const dispatch = useDispatch();
   const timer = useRef(null);
   const pathMemory = useRef([]);
+
+  useEffect(() => {
+    if (marinAccidentPer.prediction_ratio >= 70) {
+      setRiskGrade("A")
+    } else if (marinAccidentPer.prediction_ratio >= 40) {
+      setRiskGrade("B")
+    } else if (marinAccidentPer.prediction_ratio >= 20) {
+      setRiskGrade("C")
+    } else {
+      setRiskGrade("D")
+    }
+  }, [marinAccidentPer])
+
   function handleClickStartButton() {
     setOperateSystem(true)
     timer.current = setInterval(() => {
@@ -51,20 +65,6 @@ function RealTime() {
             lat: lat,
             lng: lng
           })
-          // pathMemory.current = [
-          //   {
-          //     lat: 37.4845377,
-          //     lng: 127.05075719999999
-          //   },
-          //   {
-          //     lat: 37.485,
-          //     lng: 127.06
-          //   },
-          //   {
-          //     lat: 37.487,
-          //     lng: 127.04
-          //   },
-          // ]
           setUserGeolocationPath(pathMemory.current)
           dispatch(getObservatoryData(lat, lng))
         });
@@ -87,8 +87,8 @@ function RealTime() {
         </Center>
         <Stack spacing={{base: '5', md: '20' }} pt={{base: '3', md: '5' }} direction={{ base: 'column', md: 'row' }}>
           <Center>
-            <CircularProgress size={{base: "150px", md: "300px"}} value={40} color="green.400">
-              <CircularProgressLabel>{marinAccidentPer}%</CircularProgressLabel>
+            <CircularProgress size={{base: "150px", md: "300px"}} value={marinAccidentPer.prediction_ratio} color={marinAccidentPer.prediction_ratio < 40 ? "green.400" : (marinAccidentPer.prediction_ratio < 70 ? "orange.400" : "red.400")}>
+              <CircularProgressLabel>{marinAccidentPer.prediction_ratio}%</CircularProgressLabel>
             </CircularProgress>
           </Center>
           <VStack
@@ -101,23 +101,23 @@ function RealTime() {
             </Badge>
             <Text>날씨</Text>
             <Badge>
-              풍속 5m/s | 파고 2m/s | 기압 900hPa 
+              풍속 {tide_data.wind_speed}m/s | 온도 {tide_data.air_temp}°C | 기압 {tide_data.air_press}hPa 
             </Badge>
-            <Text>위험 정도</Text>
+            <Text>위험 등급</Text>
             <Badge>
-              위험등급 C
+              위험등급 {riskGrade}
             </Badge>
             <Stat>
-              <StatLabel>사고 확률</StatLabel>
-              <StatNumber>{marinAccidentPer}%</StatNumber>
+              <StatLabel>위험률</StatLabel>
+              <StatNumber>{marinAccidentPer.prediction_ratio}%</StatNumber>
               <StatHelpText>
                 {
-                  marinAccidentPer - pastAccidentPer >= 0 ? 
+                  marinAccidentPer.prediction_ratio - pastAccidentPer.prediction_ratio >= 0 ? 
                   <StatArrow type="increase" />
                   :
                   <StatArrow type="decrease" />
                 }
-                {marinAccidentPer - pastAccidentPer}%
+                {marinAccidentPer.prediction_ratio - pastAccidentPer.prediction_ratio}%
               </StatHelpText>
             </Stat>
           </VStack>

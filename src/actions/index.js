@@ -8,7 +8,7 @@ import config from '../config/config.json';
 const API_KEY = config.Observatory['API key'];
 const Tide_Obs_URL = "http://www.khoa.go.kr/oceangrid/grid/api/tideObsRecent/search.do?"
 const Bu_Obs_URL = "http://www.khoa.go.kr/oceangrid/grid/api/buObsRecent/search.do?"
-const API_URL = "http://13.125.123.59:8080?"
+const API_URL = "http://13.125.123.59:8080"
 const SEA_URL = "https://www.weather.go.kr/weather/observation/marine_buoy.jsp"
 export function getObservatoryData(latitude, longitude){
   var minTide = Number.MAX_SAFE_INTEGER;
@@ -44,22 +44,24 @@ export function getObservatoryData(latitude, longitude){
       ResultType: "json"
     }}).then(({data}) => {
       TIDE_OBS_DATA = data.result.data;
-      axios.get(API_URL, {
+      const wind_spd = TIDE_OBS_DATA.wind_speed != "null" ?  TIDE_OBS_DATA.wind_speed : 3
+      const ats_pres = TIDE_OBS_DATA.air_press != "null" ?  TIDE_OBS_DATA.air_press : 1000
+      const temp = TIDE_OBS_DATA.air_temp != "null" ?  TIDE_OBS_DATA.air_temp : 20
+      const water_temp = TIDE_OBS_DATA.water_temp != "null" ?  TIDE_OBS_DATA.water_temp : 24 
+      axios.get(API_URL+"/location", {
         params: {
-          wind_spd : TIDE_OBS_DATA.wind_speed,
-          ats_pres : TIDE_OBS_DATA.air_press,
-          temp: TIDE_OBS_DATA.air_temp,
-          water_temp: TIDE_OBS_DATA.water_temp,
-          idx: minBuObsCode
+          wind_spd ,
+          ats_pres,
+          temp,
+          water_temp,
+          idx: 1
         }
-      }).then((response) => {
-        accidentData = response
+      }).then(({data}) => {
+        data.prediction_ratio = parseInt(data.prediction_ratio.slice(0, data.prediction_ratio.length - 1))
         dispatch({
           type: 'SET_MODEL_DATA',
-          payload: {
-            TIDE_OBS_DATA,
-            accidentData
-          } 
+          payload1 : TIDE_OBS_DATA,
+          payload2 : data
         })
       }).catch((error) => {
         console.log("ERROR : ", error);

@@ -8,11 +8,11 @@ import { RepeatIcon } from '@chakra-ui/icons';
 export default function Map() {
   const { kakao } = window;
   const dispatch = useDispatch();
-  const bu_data = useSelector((state) => state.bu_data);
   const tide_data = useSelector((state) => state.tide_data);
   const [marker, setMarker] = useState(0);
   const [map, setMap] = useState(null);
   const [info, setInfo] = useState(null);
+  const marinAccidentPer = useSelector(state => state.marinAccidentPer);
 
   useEffect(() => {
     var container = document.getElementById('map');
@@ -46,12 +46,12 @@ export default function Map() {
     if(info){
       info.close();
     }
-    if(bu_data) {
-      var iwContent = `<div style="padding:5px;">lat : ${tide_data.result.meta.obs_lat}</div>
-                        <div style="padding:5px;">lng : ${tide_data.result.meta.obs_lon}</div>
-                        <div style="padding:5px;">observatory : ${tide_data.result.meta.obs_post_name}</div>
-                        <div style="padding:5px;">wave_hight??(tide) : ${tide_data.result.data.wave_hight}</div>
-                        <div style="padding:5px;">wave_height(bu) : ${bu_data.result.data.wave_height}</div>
+    if(tide_data) {
+      var iwContent = ` 
+          <div style="padding:5px;">위험률 : ${marinAccidentPer.prediction_ratio}%</div>
+                        <div style="padding:5px;">풍속 : ${tide_data.wind_speed}m/s</div>
+                        <div style="padding:5px;">기온 : ${tide_data.air_temp}°C</div>
+                        <div style="padding:5px;">기압 : ${tide_data.air_press}hPa</div>
                         <div style="padding:5px;">--</div>`,
           iwRemoveable = true;
 
@@ -62,7 +62,7 @@ export default function Map() {
       setInfo(infowindow);
       infowindow.open(map, marker);
     }
-  }, [bu_data, tide_data]);
+  }, [tide_data]);
 
   function reload() {
     return window.location.reload();
