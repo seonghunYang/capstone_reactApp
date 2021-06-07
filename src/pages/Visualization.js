@@ -1,7 +1,7 @@
 import { Container, Heading, Center, Stack, Box } from '@chakra-ui/react';
 import TopNav from '../components/TopNav';
 import Footer from '../components/Footer';
-import TestChart from '../components/charts/TestChart';
+import WavePeriodChart from '../components/charts/WavePeriodChart';
 import VarRaderChart from '../components/VarRaderChart';
 import ClusterMap from '../components/VisualizationMap';
 import MonthChart from '../components/charts/MonthChart';
@@ -20,6 +20,7 @@ function Visualization() {
         <VarRaderChart/>
         <MonthChart/>
         <YearChart/>
+        <WavePeriodChart/>
         <Stack>
           <Center>
             <ClusterMap/>

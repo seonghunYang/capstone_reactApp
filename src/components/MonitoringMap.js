@@ -1,10 +1,10 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import locations from '../location/realData.json';
+import locations from '../location/tideObsList.json';
 import { useDispatch, useSelector } from 'react-redux';
 import { getObservatoryData } from '../actions';
 import { Box, useMediaQuery, IconButton, Stack, HStack } from "@chakra-ui/react";
 import { RepeatIcon } from '@chakra-ui/icons';
-import markerImage from '../images/pointer.png';
+
 
 
 export default function Map() {
@@ -25,8 +25,8 @@ export default function Map() {
 
     var map = new kakao.maps.Map(container, options);
 
-    locations.map((location) => {
-      var markerPosition = new kakao.maps.LatLng(location[5], location[4]);
+    locations.positions.map((location) => {
+      var markerPosition = new kakao.maps.LatLng(location.lat, location.lng);
       var marker = new kakao.maps.Marker({
         position: markerPosition,
         clickable: true
@@ -34,21 +34,13 @@ export default function Map() {
       marker.setMap(map);
 
       kakao.maps.event.addListener(marker, 'click', function() {
-        dispatch(getObservatoryData(location[5], location[4]));
+        dispatch(getObservatoryData(location.lat, location.lng));
         const pos = marker.getPosition();
         map.panTo(pos);
         setMarker(marker);
       });
 
     });
-
-    var imageSize = new kakao.maps.Size(15, 15); // 마커이미지의 크기입니다
-    var markerPosition = new kakao.maps.LatLng('36.0900', '124.5300');
-    var marker = new kakao.maps.Marker({
-      position: markerPosition,
-      image: new kakao.maps.MarkerImage(markerImage, imageSize, 0)
-    });
-    marker.setMap(map);
     
     setMap(map);
   }, []);
@@ -57,12 +49,8 @@ export default function Map() {
     if(info){
       info.close();
     }
-    if(bu_data) {
-      var iwContent = `<div style="padding:5px;">lat : ${tide_data.result.meta.obs_lat}</div>
-                        <div style="padding:5px;">lng : ${tide_data.result.meta.obs_lon}</div>
-                        <div style="padding:5px;">observatory : ${tide_data.result.meta.obs_post_name}</div>
-                        <div style="padding:5px;">wave_hight??(tide) : ${tide_data.result.data.wave_hight}</div>
-                        <div style="padding:5px;">wave_height(bu) : ${bu_data.result.data.wave_height}</div>
+    if(tide_data) {
+      var iwContent = `<div style="padding:5px;">wave_hight??(tide) : ${tide_data.wave_hight}</div>
                         <div style="padding:5px;">--</div>`,
           iwRemoveable = true;
 
@@ -73,7 +61,7 @@ export default function Map() {
       setInfo(infowindow);
       infowindow.open(map, marker);
     }
-  }, [bu_data, tide_data]);
+  }, [tide_data]);
 
   function reload() {
     return window.location.reload();
