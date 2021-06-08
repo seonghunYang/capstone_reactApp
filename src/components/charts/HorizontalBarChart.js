@@ -7,66 +7,57 @@ import {
   XAxis, 
   YAxis, 
   Hint,
-  LineSeries
+  HorizontalBarSeries
 } from 'react-vis';
 import 'react-vis/dist/style.css';
 import { 
   useBreakpointValue 
 } from "@chakra-ui/react";
 
-import top3Data from '../../data/top3Data.json';
+import countData from '../../data/countData.json';
 
 
-export default function Top3Chart({type}) {
+export default function HorizontalBarChart({type}) {
   const [value, setValue] = useState(null);
   const [data, setData] = useState(null);
-  const [ydomain, setDomain] = useState(null);
 
   const width = useBreakpointValue({ base: 250, md: 500 });
   const height = useBreakpointValue({ base: 250, md: 500 });
   useEffect(() => {
-    setData(top3Data.wave_period);
+    setData(countData.wave_period);
   }, []);
   useEffect(() => {
     if(type == 'wave_period'){
-      setData(top3Data.wave_period);
-      setDomain([21000, 24000]);
+      setData(countData.wave_period);
     }
     else if(type == 'wind_speed') {
-      setData(top3Data.wind_speed);
-      setDomain([3800, 3950]);
+      setData(countData.wind_speed);
     }
     else if(type == 'air_press'){
-      setData(top3Data.air_press);
-      setDomain([100, 3900]);
+      setData(countData.air_press);
     }
     else if(type == 'wave_height') {
-      setData(top3Data.wave_height.max);
-      setDomain([17000, 20200]);
+      setData(countData.wave_height.average);
     }
     else if(type == 'humidity'){
-      setData(top3Data.humidity);
-      setDomain([7600, 8300]);
+      setData(countData.humidity);
     }
     else if(type == 'water_temp') {
-      setData(top3Data.water_temp);
-      setDomain([1550, 1600]);
+      setData(countData.water_temp);
     }
     else {
-      setData(top3Data.temperature);
-      setDomain([1380, 1430]);
+      setData(countData.temperature);
     }
   },[type]);
 
   return(
     <>
-      <XYPlot xType="ordinal" width={width} height={height} yDomain={ydomain}>
+      <XYPlot yType="ordinal" xType="linear" width={width} height={height}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis/>
         <YAxis tickLabelAngle={45}/>
-        <VerticalBarSeries 
-          colorScheme="teal"
+        <HorizontalBarSeries colorScheme="teal"
           data={data}
           onValueMouseOver={(data) => setValue(data)}
           onValueMouseOut={() => setValue(null)}/>

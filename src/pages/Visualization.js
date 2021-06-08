@@ -5,7 +5,7 @@ import VarRaderChart from '../components/VarRaderChart';
 import ClusterMap from '../components/VisualizationMap';
 import MonthChart from '../components/charts/MonthChart';
 import YearChart from '../components/charts/YearChart';
-import Top3ChartContainer from '../components/Top3ChartContainer';
+import HorizontalBarChartContainer from '../components/HorizontalBarChartContainer';
 
 function Visualization() {
   return (
