@@ -22,6 +22,7 @@ function Visualization() {
             <Heading fontSize={{ base: 'xl', md: 'xl' }} mt="10" ml="7" mb="5">
               <Text as={'span'}>Effect Variable</Text>
             </Heading>
+            <HorizontalBarChartContainer/>
           </GridItem>
           <GridItem boxShadow="lg" colSpan={4} borderRadius="20" >
             <Heading fontSize={{ base: 'xl', md: 'xl' }} mt="10" ml="7"  mb="5">
