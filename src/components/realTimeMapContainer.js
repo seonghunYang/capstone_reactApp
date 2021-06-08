@@ -11,7 +11,7 @@ const RealTimeMapContainer = ( {geolocationPath} ) => {
         const container = document.getElementById('myMap');
 		const options = {
 			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 3
+			level: 5
 		};
         map.current = new kakao.maps.Map(container, options);
     }, []);
@@ -25,7 +25,8 @@ const RealTimeMapContainer = ( {geolocationPath} ) => {
                 map: map.current,
                 position : locPosition
             });
-            map.current.setCenter(locPosition)
+            map.current.setCenter(locPosition);
+            map.current.setLevel(12);
             var geocoder = new kakao.maps.services.Geocoder();
             geocoder.coord2RegionCode(locPosition.getLng(), locPosition.getLat(), (result) => {
             console.log(result)

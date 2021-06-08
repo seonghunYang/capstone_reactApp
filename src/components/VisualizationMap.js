@@ -75,8 +75,9 @@ export default function Map() {
   return(
     <Stack>
       <Box id="clusterMap" 
-      height={{base: "320px", md: "700px"}} 
-      width={{base: "320px", md: "700px"}}
+      height={{base: "320px", md: "450px"}} 
+      width={{base: "320px", md: "480px"}}
+      ml="2"
       alignItems="center"></Box>
     </Stack>
   );

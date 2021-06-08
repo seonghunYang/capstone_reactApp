@@ -95,7 +95,8 @@ const VarRaderChart = () => {
     if (isDesktop) {
       raderChartDiv.style.width = "600px"
       raderChartDiv.childNodes[0].style.width = "500px"
-      raderChartDiv.childNodes[0].style.marginLeft = "100px"
+      raderChartDiv.childNodes[0].style.marginLeft = "20px"
+      raderChartDiv.childNodes[0].style.marginTop = "30px"
     } else { 
       raderChartDiv.style.width = "300px"
       raderChartDiv.childNodes[0].style.width = "300px"
@@ -128,8 +129,8 @@ const VarRaderChart = () => {
         fontSize: 10,
       },
     }}
-    width={isDesktop ? 400 : 250}
-    height={isDesktop ? 300: 250}
+    width={isDesktop ? 250 : 150}
+    height={isDesktop ? 250: 150}
     style={{
       polygons: {
         strokeWidth: 1,

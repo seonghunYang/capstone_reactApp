@@ -13,8 +13,8 @@ import {
 import data from '../../data/accidentData_year.json';
 
 export default function TestChart() {
-  const width = useBreakpointValue({ base: "300", md: "700" });
-  const heigth = useBreakpointValue({ base: "300", md: "400" });
+  const width = useBreakpointValue({ base: "300", md: "500" });
+  const heigth = useBreakpointValue({ base: "270", md: "270" });
   return(
     <>
       <XYPlot xType="ordinal" width={width} height={heigth}>

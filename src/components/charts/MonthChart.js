@@ -17,8 +17,8 @@ import data from '../../data/accidentData_month.json';
 export default function TestChart() {
   const [value, setValue] = useState(null);
 
-  const width = useBreakpointValue({ base: 250, md: 400 });
-  const height = useBreakpointValue({ base: 250, md: 400 });
+  const width = useBreakpointValue({ base: 250, md: 670 });
+  const height = useBreakpointValue({ base: 250});
 
   return(
     <>

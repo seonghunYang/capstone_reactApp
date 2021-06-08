@@ -71,3 +71,33 @@ export function getObservatoryData(latitude, longitude){
     });
   };
 }
+
+export function getDemoData(demoAttribute) {
+  return (dispatch) => {
+    axios.get(API_URL+"/demo", {
+      params: {
+        humid :demoAttribute.humid ,
+        max_wave_h :demoAttribute.max_wave_h ,
+        sig_wave_h :demoAttribute.sig_wave_h ,
+        avg_wave_h :demoAttribute.avg_wave_h ,
+        wave_cycle :demoAttribute.wave_cycle ,
+        wind_spd :demoAttribute.wind_spd ,
+        ats_pres: demoAttribute.ats_pres,
+        temp: demoAttribute.temp,
+        water_temp: demoAttribute.water_temp,
+      }
+    }).then(({data}) => {
+      data.prediction_ratio = parseInt(data.prediction_ratio.slice(0, data.prediction_ratio.length - 1))
+      demoAttribute.wind_speed = demoAttribute.wind_spd
+      demoAttribute.air_temp = demoAttribute.temp
+      demoAttribute.air_press = demoAttribute.ats_pres
+      dispatch({
+        type: 'SET_MODEL_DATA',
+        payload1 : demoAttribute,
+        payload2 : data
+      })
+    }).catch((error) => {
+      console.log("ERROR : ", error);
+    })
+  }
+}
