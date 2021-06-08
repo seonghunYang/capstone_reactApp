@@ -26,7 +26,7 @@ function Visualization() {
         <ClusterMap/>
         <VarRaderChart/>
         <YearChart/>
-        <Top3ChartContainer/>
+        <Top3ChartContainer/> {/* 각 column 별 사고 횟수가 가장 많은 3개 value에 대한 시각화 */}
       </Container>
       <Footer/>
     </>
