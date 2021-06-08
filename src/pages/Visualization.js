@@ -14,7 +14,7 @@ function Visualization() {
       <Container maxW="container.lg" >
         <SimpleGrid
         spacing="8"
-          columns={{ sm: 2, md: 2 }}
+          columns={{ sm: 1, md: 2 }}
           mt={50} bg="gray.50">
           <Box boxShadow="md" p="6" rounded="md" bg="white">
             md

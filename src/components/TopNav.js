@@ -56,6 +56,7 @@ export default function Simple() {
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
             aria-label={'Open Menu'}
             display={{ md: 'none' }}
+            bg="#CAE9FF"
             onClick={isOpen ? onClose : onOpen}
           />
           <Logo />

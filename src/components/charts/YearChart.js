@@ -12,7 +12,7 @@ import data from '../../data/accidentData_year.json';
 export default function TestChart() {
   return(
     <>
-      <XYPlot xType="ordinal" width={1000} height={500}>
+      <XYPlot xType="ordinal" width={300} height={150}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis/>

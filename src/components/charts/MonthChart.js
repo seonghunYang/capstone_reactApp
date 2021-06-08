@@ -15,7 +15,7 @@ export default function TestChart() {
   const [value, setValue] = useState(null);
   return(
     <>
-      <XYPlot xType="ordinal" width={500} height={500}>
+      <XYPlot xType="ordinal" width={300} height={300}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis/>
