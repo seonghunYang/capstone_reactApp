@@ -2,42 +2,26 @@ import { useEffect, useState } from 'react';
 import {
   XYPlot, 
   VerticalGridLines, 
-  MarkSeries, 
+  VerticalBarSeries, 
   HorizontalGridLines, 
   XAxis, 
-  YAxis
+  YAxis,
+  RadialChart
 } from 'react-vis';
 import 'react-vis/dist/style.css';
-import datas from '../../data/wave_period_count.json';
+import data from '../../data/wave_period_count.json';
 
-function getDate() {
-  return datas.map((data) => ({
-    x: Math.floor(data.x),
-    y: Number((data.x % 1).toFixed(1)),
-    size: data.y / 5,
-    opacity: data.y * 0.01
-  }));
-}
 
-export default function TestChart() {
-  const [waveData, setWaveData] = useState(null);
-
-  useEffect(() => {
-    setWaveData(getDate());
-  }, []);
+export default function WavePeriodChart() {
+  const myData = [{angle: 1}, {angle: 5}, {angle: 2}]
   return(
     <>
-      <XYPlot xType="ordinal" width={1000} height={500} yDomain={[0,0.9,3]}>
-        <VerticalGridLines />
-        <HorizontalGridLines />
-        <XAxis/>
-        <YAxis/>
-        < MarkSeries
-          className="mark-series-example"
-          data={waveData}
-          sizeRange={[5, 10]}
-          opacityType='literal'/>
-      </XYPlot>
+      <RadialChart
+        innerRadius={100}
+        radius={140}
+        data={data}
+        width={500}
+        height={500}/>
     </>
     
   );

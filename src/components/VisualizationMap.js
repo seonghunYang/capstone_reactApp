@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import accidentData from '../data/accidentData.json';
-import { Box,  IconButton, Stack, HStack } from "@chakra-ui/react";
+import { Box,  IconButton, Stack } from "@chakra-ui/react";
 import { RepeatIcon } from '@chakra-ui/icons';
 import markerImage from '../images/pointer.png';
 
@@ -10,7 +10,7 @@ export default function Map() {
   useEffect(() => {
     var container = document.getElementById('clusterMap');
     var options = { 
-      center: new kakao.maps.LatLng(37.87914, 126.93519),
+      center: new kakao.maps.LatLng(37.87914, 127.93519),
       level: 14
     };
 
@@ -72,19 +72,11 @@ export default function Map() {
     clusterer.addMarkers(markers);
   }, []);
 
-  function reload() {
-    return window.location.reload();
-  }
-
   return(
     <Stack>
-      {/* <HStack>
-        <IconButton aria-label="Search database" icon={<RepeatIcon />}
-          onClick={() => {reload()}} />
-      </HStack> */}
       <Box id="clusterMap" 
-      height={{base: "350px", md: "500px"}} 
-      width={{base: "370px", md: "700px"}}
+      height={{base: "320px", md: "700px"}} 
+      width={{base: "320px", md: "700px"}}
       alignItems="center"></Box>
     </Stack>
   );
