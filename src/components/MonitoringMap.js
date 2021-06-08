@@ -5,6 +5,8 @@ import { getObservatoryData } from '../actions';
 import { Box, useMediaQuery, IconButton, Stack, HStack } from "@chakra-ui/react";
 import { RepeatIcon } from '@chakra-ui/icons';
 
+
+
 export default function Map() {
   const { kakao } = window;
   const dispatch = useDispatch();
@@ -39,6 +41,7 @@ export default function Map() {
       });
 
     });
+    
     setMap(map);
   }, []);
 

@@ -1,11 +1,11 @@
 import { Container, Heading, Center, Stack, Box, SimpleGrid } from '@chakra-ui/react';
 import TopNav from '../components/TopNav';
 import Footer from '../components/Footer';
-import TestChart from '../components/charts/TestChart';
 import VarRaderChart from '../components/VarRaderChart';
 import ClusterMap from '../components/VisualizationMap';
 import MonthChart from '../components/charts/MonthChart';
 import YearChart from '../components/charts/YearChart';
+import Top3ChartContainer from '../components/Top3ChartContainer';
 
 function Visualization() {
   return (
@@ -22,21 +22,12 @@ function Visualization() {
           <Box boxShadow="lg" p="6" rounded="md" bg="white">
             <MonthChart/>
           </Box>
-      </SimpleGrid>
-      </Container>
-        {/* <Center mb={50}>
-          <Heading as="h3" size="lg" isTruncated>
-            사고 데이터 시각화
-          </Heading>
-        </Center>
+        </SimpleGrid>
+        <ClusterMap/>
         <VarRaderChart/>
         <YearChart/>
-        <Stack>
-          <Center>
-            <ClusterMap/>
-          </Center>
-        </Stack> */}
-
+        <Top3ChartContainer/> {/* 각 column 별 사고 횟수가 가장 많은 3개 value에 대한 시각화 */}
+      </Container>
       <Footer/>
     </>
   );

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   XYPlot, 
   VerticalGridLines, 
@@ -8,14 +9,20 @@ import {
   Hint
 } from 'react-vis';
 import 'react-vis/dist/style.css';
-import { useState } from 'react';
+import { 
+  useBreakpointValue 
+} from "@chakra-ui/react";
 import data from '../../data/accidentData_month.json';
 
 export default function TestChart() {
   const [value, setValue] = useState(null);
+
+  const width = useBreakpointValue({ base: 250, md: 400 });
+  const height = useBreakpointValue({ base: 250, md: 400 });
+
   return(
     <>
-      <XYPlot xType="ordinal" width={300} height={300}>
+      <XYPlot xType="ordinal" width={width} height={height}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis/>
