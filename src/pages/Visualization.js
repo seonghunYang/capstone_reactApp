@@ -5,7 +5,7 @@ import VarRaderChart from '../components/VarRaderChart';
 import ClusterMap from '../components/VisualizationMap';
 import MonthChart from '../components/charts/MonthChart';
 import YearChart from '../components/charts/YearChart';
-import Top3ChartContainer from '../components/Top3ChartContainer';
+import HorizontalBarChartContainer from '../components/HorizontalBarChartContainer';
 
 function Visualization() {
   return (
@@ -26,7 +26,7 @@ function Visualization() {
         <ClusterMap/>
         <VarRaderChart/>
         <YearChart/>
-        <Top3ChartContainer/> {/* 각 column 별 사고 횟수가 가장 많은 3개 value에 대한 시각화 */}
+        <HorizontalBarChartContainer/> {/* 각 column 별 사고 횟수가 가장 많은 3개 value에 대한 시각화 */}
       </Container>
       <Footer/>
     </>

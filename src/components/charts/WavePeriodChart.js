@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   XYPlot, 
   VerticalGridLines, 
-  VerticalBarSeries, 
+  HorizontalBarSeries, 
   HorizontalGridLines, 
   XAxis, 
   YAxis,
@@ -13,15 +13,15 @@ import data from '../../data/wave_period_count.json';
 
 
 export default function WavePeriodChart() {
-  const myData = [{angle: 1}, {angle: 5}, {angle: 2}]
   return(
     <>
-      <RadialChart
-        innerRadius={100}
-        radius={140}
-        data={data}
-        width={500}
-        height={500}/>
+      <XYPlot yType="ordinal" xType="linear" width={900} height={900}>
+        <VerticalGridLines />
+        <HorizontalGridLines />
+        <XAxis/>
+        <YAxis />
+        <HorizontalBarSeries data={data}/>
+      </XYPlot>
     </>
     
   );
