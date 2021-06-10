@@ -19,7 +19,8 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogContent,
-  AlertDialogOverlay
+  AlertDialogOverlay,
+  Spinner
 } from '@chakra-ui/react';
 
 import {
@@ -164,6 +165,7 @@ function RealTime() {
   const [riskGrade, setRiskGrade] = useState("D");
   const [alertColor, setAlertColor] = useState(null);
   const [isOpen, setIsOpen] = useState(false)
+  const [isOver, setIsOver] = useState(false);
   const onClose = () => setIsOpen(false)
   const cancelRef = useRef()
   const tide_data = useSelector(state => state.tide_data);
@@ -213,15 +215,22 @@ function RealTime() {
   function handleClickStartButton() {
     setOperateSystem(true)
     timer.current = setInterval(() => {
-      const lat = testData[demoIdx.current].lat
-      const lng = testData[demoIdx.current].lng
-      pathMemory.current = pathMemory.current.concat({
-        lat: lat,
-        lng: lng
-      })
-      setUserGeolocationPath(pathMemory.current)
-      dispatch(getDemoData(testData[demoIdx.current]))
-      demoIdx.current = demoIdx.current + 1
+      if(demoIdx.current == 9){
+        setIsOver(true);
+        clearInterval(timer.current);
+      }
+      else{
+        const lat = testData[demoIdx.current].lat
+        const lng = testData[demoIdx.current].lng
+        pathMemory.current = pathMemory.current.concat({
+          lat: lat,
+          lng: lng
+        })
+        setUserGeolocationPath(pathMemory.current)
+        dispatch(getDemoData(testData[demoIdx.current]))
+        demoIdx.current = demoIdx.current + 1
+      }
+      
         // navigator.geolocation.getCurrentPosition((position) => {
         //   const lat = position.coords.latitude;
         //   const lng = position.coords.longitude;
@@ -265,7 +274,7 @@ function RealTime() {
               </AlertDialogHeader>
 
               <AlertDialogBody>
-                날씨가 좋지 안아 매우 위험합니다. 조속히 철수하시길 바랍니다
+                날씨가 좋지 않아 매우 위험합니다. 조속히 철수하시길 바랍니다
               </AlertDialogBody>
               <AlertDialogFooter>
                 <Button colorScheme="red" onClick={onClose} ml={3}>
@@ -280,14 +289,37 @@ function RealTime() {
       <Container maxW="container.md">
         <Center p="6">
           <ButtonGroup spacing="6">
-            <Button isDisabled={operateSystem} colorScheme="blue" variant="solid" onClick={handleClickStartButton}>Start</Button>
-            <Button isDisabled={!operateSystem} colorScheme="blue" variant="outline" onClick={handleClickStopButton}>Stop</Button>
+            {!isOver &&
+              <>
+                <Button isDisabled={operateSystem} colorScheme="blue" variant="solid" onClick={handleClickStartButton}>Start</Button>
+                <Button isDisabled={!operateSystem} colorScheme="blue" variant="outline" onClick={handleClickStopButton}>Stop</Button>
+              </>
+            }
+            {isOver &&
+              <>
+                <Button isDisabled={true} colorScheme="blue" variant="solid" onClick={handleClickStartButton}>---</Button>
+                <Button isDisabled={true} colorScheme="blue" variant="outline" onClick={handleClickStopButton}>---</Button>
+              </>
+            }
           </ButtonGroup>
         </Center>
         <Stack spacing={{base: '5', md: '20' }} pt={{base: '3', md: '5' }} direction={{ base: 'column', md: 'row' }}>
           <Center>
             <CircularProgress size={{base: "150px", md: "300px"}} value={marinAccidentPer.prediction_ratio} color={marinAccidentPer.prediction_ratio < 40 ? "green.400" : (marinAccidentPer.prediction_ratio < 70 ? "orange.400" : "red.400")}>
-              <CircularProgressLabel>{marinAccidentPer.prediction_ratio}%</CircularProgressLabel>
+              {!isOver &&
+                <CircularProgressLabel>{marinAccidentPer.prediction_ratio}%</CircularProgressLabel>
+              }
+              {isOver &&
+                <CircularProgressLabel>
+                  <Spinner
+                    thickness="4px"
+                    speed="0.65s"
+                    emptyColor="gray.200"
+                    color="black"
+                    size="xl" />
+                </CircularProgressLabel> 
+              }
+              
             </CircularProgress>
           </Center>
           <VStack
@@ -295,29 +327,72 @@ function RealTime() {
           align="stretch"            
           >
             <Text>위치</Text>
-            <Badge>
-              {location}
-            </Badge>
+            {!isOver &&
+              <Badge>
+                {location}
+              </Badge>
+            }
+            {isOver &&
+              <Badge>
+                ------
+              </Badge>
+            }
             <Text>날씨</Text>
-            <Badge>
-              풍속 {tide_data.wind_speed}m/s | 온도 {tide_data.air_temp}°C | 기압 {tide_data.air_press}hPa 
-            </Badge>
+            {!isOver &&
+              <Badge>
+                풍속 {tide_data.wind_speed}m/s | 온도 {tide_data.air_temp}°C | 기압 {tide_data.air_press}hPa 
+              </Badge>
+            }
+            {isOver &&
+              <Badge>
+                풍속 ---m/s | 온도 ---°C | 기압 ---hPa 
+              </Badge>
+            }
             <Text>위험 등급</Text>
-            <Badge>
-              위험등급 {riskGrade}
-            </Badge>
+            {!isOver &&
+              <Badge>
+                위험등급 {riskGrade}
+              </Badge>
+            }
+            {isOver &&
+              <Badge>
+                위험등급 ---
+              </Badge>
+            }
             <Stat>
               <StatLabel>위험률</StatLabel>
-              <StatNumber>{marinAccidentPer.prediction_ratio}%</StatNumber>
-              <StatHelpText>
-                {
-                  marinAccidentPer.prediction_ratio - pastAccidentPer.prediction_ratio >= 0 ? 
-                  <StatArrow type="increase" />
-                  :
-                  <StatArrow type="decrease" />
-                }
-                {marinAccidentPer.prediction_ratio - pastAccidentPer.prediction_ratio}%
-              </StatHelpText>
+              {!isOver &&
+                <>
+                  <StatNumber>{marinAccidentPer.prediction_ratio}%</StatNumber>
+                  <StatHelpText>
+                    {
+                      marinAccidentPer.prediction_ratio - pastAccidentPer.prediction_ratio >= 0 ? 
+                      <StatArrow type="increase" />
+                      :
+                      <StatArrow type="decrease" />
+                    }
+                    {marinAccidentPer.prediction_ratio - pastAccidentPer.prediction_ratio}%
+                  </StatHelpText>
+                </>
+              }
+              {isOver &&
+                <>
+                  <StatNumber>
+                    <Spinner
+                      size="sm"
+                    /> %
+                  </StatNumber>
+                  <StatHelpText>
+                    {
+                      marinAccidentPer.prediction_ratio - pastAccidentPer.prediction_ratio >= 0 ? 
+                      <StatArrow type="increase" />
+                      :
+                      <StatArrow type="decrease" />
+                    }
+                    --- %
+                  </StatHelpText>
+                </>
+              }
             </Stat>
           </VStack>
         </Stack>

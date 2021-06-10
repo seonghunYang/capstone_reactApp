@@ -10,7 +10,7 @@ export default function Map() {
   useEffect(() => {
     var container = document.getElementById('clusterMap');
     var options = { 
-      center: new kakao.maps.LatLng(37.87914, 127.93519),
+      center: new kakao.maps.LatLng(36.01914, 127.53519),
       level: 14
     };
 
@@ -75,7 +75,7 @@ export default function Map() {
   return(
     <Stack>
       <Box id="clusterMap" 
-      height={{base: "320px", md: "450px"}} 
+      height={{base: "320px", md: "420px"}} 
       width={{base: "320px", md: "480px"}}
       ml="2"
       alignItems="center"></Box>

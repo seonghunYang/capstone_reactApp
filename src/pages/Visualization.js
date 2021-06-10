@@ -11,7 +11,7 @@ function Visualization() {
   return (
     <>
       <TopNav/>
-      <Container maxW="container.xl" >
+      <Container maxW="container.xl" mt={20} mb={20}>
         <Grid
           h="900px"
           templateRows="repeat(3, 1fr)"
