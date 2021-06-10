@@ -21,8 +21,8 @@ export default function HorizontalBarChart({type}) {
   const [value, setValue] = useState(null);
   const [data, setData] = useState(null);
 
-  const width = useBreakpointValue({ base: 250, md: 500 });
-  const height = useBreakpointValue({ base: 250, md: 500 });
+  const width = useBreakpointValue({ base: 250, md: 250 });
+  const height = useBreakpointValue({ base: 250, md: 400 });
   useEffect(() => {
     setData(countData.wave_period);
   }, []);

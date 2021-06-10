@@ -11,7 +11,7 @@ function Visualization() {
   return (
     <>
       <TopNav/>
-      <Container maxW="container.xl" >
+      <Container maxW="container.xl" mt={20} mb={20}>
         <Grid
           h="900px"
           templateRows="repeat(3, 1fr)"
@@ -22,6 +22,7 @@ function Visualization() {
             <Heading fontSize={{ base: 'xl', md: 'xl' }} mt="10" ml="7" mb="5">
               <Text as={'span'}>Effect Variable</Text>
             </Heading>
+            <HorizontalBarChartContainer/>
           </GridItem>
           <GridItem boxShadow="lg" colSpan={4} borderRadius="20" >
             <Heading fontSize={{ base: 'xl', md: 'xl' }} mt="10" ml="7"  mb="5">

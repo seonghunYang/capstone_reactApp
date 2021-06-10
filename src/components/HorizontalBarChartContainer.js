@@ -14,7 +14,7 @@ export default function HorizontalBarChartContainer() {
   return(
     <Box>
       <VStack >
-        <HStack>
+        <HStack width={{ base: 50, md: 60 }}>
           <Button colorScheme="teal" variant="outline" size="xs" onClick={() => {setType('wave_period')}}>
             파주기
           </Button>

@@ -28,7 +28,7 @@ export default function TestChart() {
         <XAxis/>
         <YAxis />
         <VerticalBarSeries 
-          color="red"
+          color="#2C5282"
           data={data}
           onValueMouseOver={(data) => setValue(data)}
           onValueMouseOut={() => setValue(null)}/>
