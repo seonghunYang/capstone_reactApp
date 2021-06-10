@@ -185,6 +185,7 @@ function RealTime() {
     accident.current = marinAccidentPer.prediction_ratio
     if (marinAccidentPer.prediction_ratio >= 75) {
       setIsOpen(true)
+      setRiskGrade("A")
     } else if (marinAccidentPer.prediction_ratio >= 70) {
       setRiskGrade("A")
       setTimeout(() => {
@@ -200,8 +201,8 @@ function RealTime() {
         status: "warning",
         isClosable: true,
       })
-    }
-      else if (marinAccidentPer.prediction_ratio >= 40) {
+      setRiskGrade("B")
+    } else if (marinAccidentPer.prediction_ratio >= 40) {
       setRiskGrade("B")
     } else if (marinAccidentPer.prediction_ratio >= 20) {
       setRiskGrade("C")
