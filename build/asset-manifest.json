@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/capstone_reactApp/static/css/main.70febbd4.chunk.css",
-    "main.js": "/capstone_reactApp/static/js/main.a9f6086a.chunk.js",
-    "main.js.map": "/capstone_reactApp/static/js/main.a9f6086a.chunk.js.map",
-    "runtime-main.js": "/capstone_reactApp/static/js/runtime-main.54ded863.js",
-    "runtime-main.js.map": "/capstone_reactApp/static/js/runtime-main.54ded863.js.map",
-    "static/css/2.62e7949a.chunk.css": "/capstone_reactApp/static/css/2.62e7949a.chunk.css",
-    "static/js/2.2f29da5a.chunk.js": "/capstone_reactApp/static/js/2.2f29da5a.chunk.js",
-    "static/js/2.2f29da5a.chunk.js.map": "/capstone_reactApp/static/js/2.2f29da5a.chunk.js.map",
-    "static/js/3.620af3b7.chunk.js": "/capstone_reactApp/static/js/3.620af3b7.chunk.js",
-    "static/js/3.620af3b7.chunk.js.map": "/capstone_reactApp/static/js/3.620af3b7.chunk.js.map",
-    "index.html": "/capstone_reactApp/index.html",
-    "static/css/2.62e7949a.chunk.css.map": "/capstone_reactApp/static/css/2.62e7949a.chunk.css.map",
-    "static/css/main.70febbd4.chunk.css.map": "/capstone_reactApp/static/css/main.70febbd4.chunk.css.map",
-    "static/js/2.2f29da5a.chunk.js.LICENSE.txt": "/capstone_reactApp/static/js/2.2f29da5a.chunk.js.LICENSE.txt",
-    "static/media/vesselIcon.6d08b1bd.jpg": "/capstone_reactApp/static/media/vesselIcon.6d08b1bd.jpg"
+    "main.css": "/static/css/main.70febbd4.chunk.css",
+    "main.js": "/static/js/main.90c72de3.chunk.js",
+    "main.js.map": "/static/js/main.90c72de3.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.5be0d0d7.js",
+    "runtime-main.js.map": "/static/js/runtime-main.5be0d0d7.js.map",
+    "static/css/2.62e7949a.chunk.css": "/static/css/2.62e7949a.chunk.css",
+    "static/js/2.5f34f0ed.chunk.js": "/static/js/2.5f34f0ed.chunk.js",
+    "static/js/2.5f34f0ed.chunk.js.map": "/static/js/2.5f34f0ed.chunk.js.map",
+    "static/js/3.983a2339.chunk.js": "/static/js/3.983a2339.chunk.js",
+    "static/js/3.983a2339.chunk.js.map": "/static/js/3.983a2339.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.62e7949a.chunk.css.map": "/static/css/2.62e7949a.chunk.css.map",
+    "static/css/main.70febbd4.chunk.css.map": "/static/css/main.70febbd4.chunk.css.map",
+    "static/js/2.5f34f0ed.chunk.js.LICENSE.txt": "/static/js/2.5f34f0ed.chunk.js.LICENSE.txt",
+    "static/media/vesselIcon.6d08b1bd.jpg": "/static/media/vesselIcon.6d08b1bd.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.54ded863.js",
+    "static/js/runtime-main.5be0d0d7.js",
     "static/css/2.62e7949a.chunk.css",
-    "static/js/2.2f29da5a.chunk.js",
+    "static/js/2.5f34f0ed.chunk.js",
     "static/css/main.70febbd4.chunk.css",
-    "static/js/main.a9f6086a.chunk.js"
+    "static/js/main.90c72de3.chunk.js"
   ]
 }
