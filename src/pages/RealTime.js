@@ -186,10 +186,9 @@ function RealTime() {
   useEffect(() => {
     accident.current = marinAccidentPer.prediction_ratio
     if (marinAccidentPer.prediction_ratio >= 75) {
-      setIsOpen(true)
-      setRiskGrade("A")
-    } else if (marinAccidentPer.prediction_ratio >= 70) {
-      setRiskGrade("A")
+      setTimeout(() => {
+        setIsOpen(true)
+      }, 2500)
       setTimeout(() => {
         toast({
           title: `날씨가 매우 좋지 않습니다. 위험하오니 조속히 철수 하시길 바랍니다.`,
@@ -197,6 +196,16 @@ function RealTime() {
           isClosable: true,
         })
       }, 2000)
+      setRiskGrade("A")
+    } else if (marinAccidentPer.prediction_ratio >= 70) {
+      setTimeout(() => {
+        toast({
+          title: `날씨가 매우 좋지 않습니다. 위험하오니 조속히 철수 하시길 바랍니다.`,
+          status: "error",
+          isClosable: true,
+        })
+      }, 2000)
+      setRiskGrade("A")
     } else if (marinAccidentPer.prediction_ratio >= 60) {
       toast({
         title: `날씨가 좋지 않습니다. 선박 운행에 주의하시길 바랍니다.`,
@@ -242,7 +251,7 @@ function RealTime() {
         //   setUserGeolocationPath(pathMemory.current)
         //   dispatch(getObservatoryData(lat, lng))
         // });
-    }, 5000);
+    }, 7000);
 
     alerttimer.current = setInterval(()=> {
       if (accident.current >= 70) {
