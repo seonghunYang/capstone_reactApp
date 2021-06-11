@@ -6,7 +6,7 @@ import RealTime from "./pages/RealTime";
 
 function App() {
   return (
-    <Router basename="/capstone_reactApp">
+    <Router>
       <Switch>
         <Route path="/real-time" component={RealTime}></Route>
         <Route path="/monitoring" component={Monitoring}></Route>
