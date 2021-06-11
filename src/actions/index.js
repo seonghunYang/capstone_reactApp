@@ -1,6 +1,5 @@
 import axios from 'axios';
 import tideObsList from '../location/tideObsList.json';
-import buoyList from '../location/Buoy.json';
 import config from '../config/config.json';
 
 
@@ -9,9 +8,7 @@ const Tide_Obs_URL = "http://www.khoa.go.kr/oceangrid/grid/api/tideObsRecent/sea
 const API_URL = "http://13.125.123.59:8080"
 export function getObservatoryData(latitude, longitude){
   var minTide = Number.MAX_SAFE_INTEGER;
-  var minBu = Number.MAX_SAFE_INTEGER;
   var minTideObsCode = null;
-  var minBuObsCode = null;
 
   tideObsList.positions.map((position) => {
     var calLat = (position.lat - latitude)**2;
@@ -21,16 +18,7 @@ export function getObservatoryData(latitude, longitude){
       minTide = sum;
       minTideObsCode = position.id;
     }
-  });
-
-  buoyList.positions.map((position) => {
-    var calLat = (position.lat - latitude)**2;
-    var calLng = (position.lng - longitude)**2;
-    var sum = calLat + calLng;
-    if(minBu > sum){
-      minBu = sum;
-      minBuObsCode = position.idx;
-    }
+    return
   });
 
   return async (dispatch) => {
@@ -41,10 +29,10 @@ export function getObservatoryData(latitude, longitude){
       ResultType: "json"
     }}).then(({data}) => {
       TIDE_OBS_DATA = data.result.data;
-      const wind_spd = TIDE_OBS_DATA.wind_speed != "null" ?  TIDE_OBS_DATA.wind_speed : 3
-      const ats_pres = TIDE_OBS_DATA.air_press != "null" ?  TIDE_OBS_DATA.air_press : 1000
-      const temp = TIDE_OBS_DATA.air_temp != "null" ?  TIDE_OBS_DATA.air_temp : 20
-      const water_temp = TIDE_OBS_DATA.water_temp != "null" ?  TIDE_OBS_DATA.water_temp : 24 
+      const wind_spd = TIDE_OBS_DATA.wind_speed !== "null" ?  TIDE_OBS_DATA.wind_speed : 3
+      const ats_pres = TIDE_OBS_DATA.air_press !== "null" ?  TIDE_OBS_DATA.air_press : 1000
+      const temp = TIDE_OBS_DATA.air_temp !== "null" ?  TIDE_OBS_DATA.air_temp : 20
+      const water_temp = TIDE_OBS_DATA.water_temp !== "null" ?  TIDE_OBS_DATA.water_temp : 24 
       axios.get(API_URL+"/location", {
         params: {
           wind_spd ,

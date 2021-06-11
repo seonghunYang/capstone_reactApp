@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux'
 const RealTimeMapContainer = ( {geolocationPath} ) => {
     const map = useRef(null);
     const dispatch = useDispatch();
-    const location = useSelector((state) => state.location)
     useEffect(() => {
         const container = document.getElementById('myMap');
 		const options = {
@@ -18,10 +17,10 @@ const RealTimeMapContainer = ( {geolocationPath} ) => {
 
     useEffect(() => {
         const length = geolocationPath.length
-        if (length != 0) {
+        if (length !== 0) {
             const locPosition = new kakao.maps.LatLng(geolocationPath[length-1].lat, geolocationPath[length-1].lng)
             // maker 선택
-            let marker = new kakao.maps.Marker({
+            new kakao.maps.Marker({
                 map: map.current,
                 position : locPosition
             });
@@ -40,7 +39,7 @@ const RealTimeMapContainer = ( {geolocationPath} ) => {
                 return new kakao.maps.LatLng(location.lat, location.lng)
             })
             console.log(paths)
-            let polyline = new kakao.maps.Polyline({
+            new kakao.maps.Polyline({
                 map: map.current,
                 path: paths, 
                 strokeWeight: 2,

@@ -18,7 +18,8 @@ const reducer = produce((state, action) => {
       state.marinAccidentPer = action.payload2;
       break;
     case "CHANGE_LOCATION":
-      state.location = action.payload
+      state.location = action.payload;
+      break;
     default:
       break;
   }

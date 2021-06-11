@@ -1,8 +1,8 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import locations from '../location/tideObsList.json';
 import { useDispatch, useSelector } from 'react-redux';
 import { getObservatoryData } from '../actions';
-import { Box, useMediaQuery, IconButton, Stack, HStack } from "@chakra-ui/react";
+import { Box, IconButton, Stack, HStack } from "@chakra-ui/react";
 import { RepeatIcon } from '@chakra-ui/icons';
 
 
@@ -39,7 +39,7 @@ export default function Map() {
         map.panTo(pos);
         setMarker(marker);
       });
-
+      return
     });
     
     setMap(map);

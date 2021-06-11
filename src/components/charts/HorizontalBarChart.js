@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import {
   XYPlot, 
   VerticalGridLines, 
-  VerticalBarSeries, 
   HorizontalGridLines, 
   XAxis, 
   YAxis, 
@@ -27,22 +26,22 @@ export default function HorizontalBarChart({type}) {
     setData(countData.wave_period);
   }, []);
   useEffect(() => {
-    if(type == 'wave_period'){
+    if(type === 'wave_period'){
       setData(countData.wave_period);
     }
-    else if(type == 'wind_speed') {
+    else if(type === 'wind_speed') {
       setData(countData.wind_speed);
     }
-    else if(type == 'air_press'){
+    else if(type === 'air_press'){
       setData(countData.air_press);
     }
-    else if(type == 'wave_height') {
+    else if(type === 'wave_height') {
       setData(countData.wave_height.average);
     }
-    else if(type == 'humidity'){
+    else if(type === 'humidity'){
       setData(countData.humidity);
     }
-    else if(type == 'water_temp') {
+    else if(type === 'water_temp') {
       setData(countData.water_temp);
     }
     else {

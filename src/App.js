@@ -3,11 +3,10 @@ import Main from "./pages/Main";
 import Visualization from "./pages/Visualization";
 import Monitoring from "./pages/Monitoring";
 import RealTime from "./pages/RealTime";
-import About from "./pages/About";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/capstone_reactApp">
       <Switch>
         <Route path="/real-time" component={RealTime}></Route>
         <Route path="/monitoring" component={Monitoring}></Route>

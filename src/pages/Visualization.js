@@ -1,4 +1,4 @@
-import { Container, GridItem, Heading,List, ListItem, ListIcon, Stack, Box, Grid, Text } from '@chakra-ui/react';
+import { Container, GridItem, Heading,List, ListItem, ListIcon, Grid, Text } from '@chakra-ui/react';
 import TopNav from '../components/TopNav';
 import Footer from '../components/Footer';
 import VarRaderChart from '../components/VarRaderChart';
@@ -6,7 +6,7 @@ import ClusterMap from '../components/VisualizationMap';
 import MonthChart from '../components/charts/MonthChart';
 import YearChart from '../components/charts/YearChart';
 import HorizontalBarChartContainer from '../components/HorizontalBarChartContainer';
-import { PhoneIcon, AddIcon, CheckCircleIcon } from '@chakra-ui/icons'
+import { CheckCircleIcon } from '@chakra-ui/icons'
 
 function Visualization() {
   return (
@@ -87,10 +87,5 @@ function Visualization() {
     </>
   );
 }
-        {/* </SimpleGrid>
-        <ClusterMap/>
-        <VarRaderChart/>
-        <YearChart/>
-        <Top3ChartContainer/> 각 column 별 사고 횟수가 가장 많은 3개 value에 대한 시각화 */}
 
 export default Visualization;

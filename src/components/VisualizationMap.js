@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import accidentData from '../data/accidentData.json';
-import { Box,  IconButton, Stack } from "@chakra-ui/react";
-import { RepeatIcon } from '@chakra-ui/icons';
+import { Box, Stack } from "@chakra-ui/react";
 import markerImage from '../images/pointer.png';
 
 export default function Map() {

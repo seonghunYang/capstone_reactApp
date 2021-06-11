@@ -2,7 +2,6 @@ import {useEffect, useState, useRef} from "react";
 import { useToast } from "@chakra-ui/react"
 import {
   Button,
-  Flex,
   Center,
   Stack,
   Text,
@@ -10,10 +9,8 @@ import {
   CircularProgress,
   CircularProgressLabel,
   ButtonGroup,
-  useBreakpointValue,
   Badge,
   VStack,
-  Box,
   AlertDialog,
   AlertDialogBody,
   AlertDialogFooter,
@@ -29,13 +26,12 @@ import {
   StatNumber,
   StatHelpText,
   StatArrow,
-  BeatLoader,
 } from "@chakra-ui/react"
 
 import TopNav from '../components/TopNav';
 import Footer from '../components/Footer';
 import RealTimeMapContainer from '../components/realTimeMapContainer';
-import {getObservatoryData, getDemoData} from "../actions/index";
+import {getDemoData} from "../actions/index";
 import { useDispatch, useSelector } from 'react-redux'
 
 const testData = [
@@ -225,7 +221,7 @@ function RealTime() {
   function handleClickStartButton() {
     setOperateSystem(true)
     timer.current = setInterval(() => {
-      if(demoIdx.current == 9){
+      if(demoIdx.current === 9){
         setIsOver(true);
         clearInterval(timer.current);
       }
