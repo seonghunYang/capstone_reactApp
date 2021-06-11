@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.70febbd4.chunk.css",
-    "main.js": "/static/js/main.5b79eb68.chunk.js",
-    "main.js.map": "/static/js/main.5b79eb68.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.40c52327.js",
-    "runtime-main.js.map": "/static/js/runtime-main.40c52327.js.map",
-    "static/css/2.62e7949a.chunk.css": "/static/css/2.62e7949a.chunk.css",
-    "static/js/2.0e359c5c.chunk.js": "/static/js/2.0e359c5c.chunk.js",
-    "static/js/2.0e359c5c.chunk.js.map": "/static/js/2.0e359c5c.chunk.js.map",
-    "static/js/3.42ab308c.chunk.js": "/static/js/3.42ab308c.chunk.js",
-    "static/js/3.42ab308c.chunk.js.map": "/static/js/3.42ab308c.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.62e7949a.chunk.css.map": "/static/css/2.62e7949a.chunk.css.map",
-    "static/css/main.70febbd4.chunk.css.map": "/static/css/main.70febbd4.chunk.css.map",
-    "static/js/2.0e359c5c.chunk.js.LICENSE.txt": "/static/js/2.0e359c5c.chunk.js.LICENSE.txt",
-    "static/media/vesselIcon.6d08b1bd.jpg": "/static/media/vesselIcon.6d08b1bd.jpg"
+    "main.css": "/capstone_reactApp/static/css/main.70febbd4.chunk.css",
+    "main.js": "/capstone_reactApp/static/js/main.52ad760d.chunk.js",
+    "main.js.map": "/capstone_reactApp/static/js/main.52ad760d.chunk.js.map",
+    "runtime-main.js": "/capstone_reactApp/static/js/runtime-main.54ded863.js",
+    "runtime-main.js.map": "/capstone_reactApp/static/js/runtime-main.54ded863.js.map",
+    "static/css/2.62e7949a.chunk.css": "/capstone_reactApp/static/css/2.62e7949a.chunk.css",
+    "static/js/2.cdc20197.chunk.js": "/capstone_reactApp/static/js/2.cdc20197.chunk.js",
+    "static/js/2.cdc20197.chunk.js.map": "/capstone_reactApp/static/js/2.cdc20197.chunk.js.map",
+    "static/js/3.620af3b7.chunk.js": "/capstone_reactApp/static/js/3.620af3b7.chunk.js",
+    "static/js/3.620af3b7.chunk.js.map": "/capstone_reactApp/static/js/3.620af3b7.chunk.js.map",
+    "index.html": "/capstone_reactApp/index.html",
+    "static/css/2.62e7949a.chunk.css.map": "/capstone_reactApp/static/css/2.62e7949a.chunk.css.map",
+    "static/css/main.70febbd4.chunk.css.map": "/capstone_reactApp/static/css/main.70febbd4.chunk.css.map",
+    "static/js/2.cdc20197.chunk.js.LICENSE.txt": "/capstone_reactApp/static/js/2.cdc20197.chunk.js.LICENSE.txt",
+    "static/media/vesselIcon.6d08b1bd.jpg": "/capstone_reactApp/static/media/vesselIcon.6d08b1bd.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.40c52327.js",
+    "static/js/runtime-main.54ded863.js",
     "static/css/2.62e7949a.chunk.css",
-    "static/js/2.0e359c5c.chunk.js",
+    "static/js/2.cdc20197.chunk.js",
     "static/css/main.70febbd4.chunk.css",
-    "static/js/main.5b79eb68.chunk.js"
+    "static/js/main.52ad760d.chunk.js"
   ]
 }
