@@ -23,10 +23,6 @@ const Links = [
   {
     label: '실시간 위험지표',
     href: '/real-time',
-  },
-  {
-    label: 'About',
-    href: '/about'
   }
 ];
 

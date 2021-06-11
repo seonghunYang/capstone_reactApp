@@ -9,7 +9,6 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/about" component={About}></Route>
         <Route path="/real-time" component={RealTime}></Route>
         <Route path="/monitoring" component={Monitoring}></Route>
         <Route path="/visualization" component={Visualization}></Route>

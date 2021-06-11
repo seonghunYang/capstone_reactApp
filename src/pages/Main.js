@@ -43,7 +43,8 @@ function Main() {
                 </Text>{' '}
               </Heading>
               <Text fontSize={{ base: 'md', lg: 'lg' }} color={'gray.500'}>
-              Real-time prediction of marine accidents,National Ocean Monitoring 
+                Real-time prediction of marine accidents, 
+                National Ocean Monitoring 
               </Text>
               <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
                 <Button
