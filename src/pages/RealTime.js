@@ -221,32 +221,16 @@ function RealTime() {
   function handleClickStartButton() {
     setOperateSystem(true)
     timer.current = setInterval(() => {
-      if(demoIdx.current === 9){
-        setIsOver(true);
-        clearInterval(timer.current);
-      }
-      else{
-        const lat = testData[demoIdx.current].lat
-        const lng = testData[demoIdx.current].lng
-        pathMemory.current = pathMemory.current.concat({
-          lat: lat,
-          lng: lng
-        })
-        setUserGeolocationPath(pathMemory.current)
-        dispatch(getDemoData(testData[demoIdx.current]))
-        demoIdx.current = demoIdx.current + 1
-      }
-      
-        // navigator.geolocation.getCurrentPosition((position) => {
-        //   const lat = position.coords.latitude;
-        //   const lng = position.coords.longitude;
-          // pathMemory.current = pathMemory.current.concat({
-          //   lat: lat,
-          //   lng: lng
-          // })
-        //   setUserGeolocationPath(pathMemory.current)
-        //   dispatch(getObservatoryData(lat, lng))
-        // });
+        navigator.geolocation.getCurrentPosition((position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          pathMemory.current = pathMemory.current.concat({
+            lat: lat,
+            lng: lng
+          })
+          setUserGeolocationPath(pathMemory.current)
+          dispatch(getObservatoryData(lat, lng))
+        });
     }, 7000);
 
     alerttimer.current = setInterval(()=> {
