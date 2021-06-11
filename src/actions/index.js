@@ -18,11 +18,12 @@ export function getObservatoryData(latitude, longitude){
       minTide = sum;
       minTideObsCode = position.id;
     }
-    return
-  });
+    return 0
+  }
+  );
 
   return async (dispatch) => {
-    let TIDE_OBS_DATA, accidentData
+    let TIDE_OBS_DATA;
     axios.get(Tide_Obs_URL, {params: {
       ServiceKey: API_KEY,
       ObsCode: minTideObsCode,

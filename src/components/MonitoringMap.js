@@ -39,7 +39,7 @@ export default function Map() {
         map.panTo(pos);
         setMarker(marker);
       });
-      return
+      return 0
     });
     
     setMap(map);
