@@ -1,15 +1,12 @@
 import axios from 'axios';
 import tideObsList from '../location/tideObsList.json';
-import buObsList from '../location/buObsList.json';
 import buoyList from '../location/Buoy.json';
 import config from '../config/config.json';
 
 
 const API_KEY = config.Observatory['API key'];
 const Tide_Obs_URL = "http://www.khoa.go.kr/oceangrid/grid/api/tideObsRecent/search.do?"
-const Bu_Obs_URL = "http://www.khoa.go.kr/oceangrid/grid/api/buObsRecent/search.do?"
 const API_URL = "http://13.125.123.59:8080"
-const SEA_URL = "https://www.weather.go.kr/weather/observation/marine_buoy.jsp"
 export function getObservatoryData(latitude, longitude){
   var minTide = Number.MAX_SAFE_INTEGER;
   var minBu = Number.MAX_SAFE_INTEGER;
